@@ -12,11 +12,11 @@ export default function DBForm() {
   });
   const [results, setResults] = useState(null);
 
-  const handleChange = (e) => {
+  const handleChange = (e : any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e : any) => {
     e.preventDefault();
     try {
       const res = await fetch(`/api/db/read`, {
