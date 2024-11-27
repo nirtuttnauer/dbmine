@@ -1,23 +1,23 @@
-'use client'
-// components/DBForm.js
+'use client';
+
 import { useState } from "react";
 
 export default function DBForm() {
   const [formData, setFormData] = useState({
-    host: "",
-    user: "",
-    password: "",
-    database: "",
     query: "",
   });
   const [results, setResults] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleChange = (e : any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e : any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError(null);
     try {
       const res = await fetch(`/api/db/read`, {
         method: "POST",
@@ -28,28 +28,47 @@ export default function DBForm() {
       if (data.success) {
         setResults(data.data);
       } else {
-        alert("Error: " + data.error);
+        setError(data.error || "An unknown error occurred.");
       }
     } catch (err) {
       console.error(err);
-      alert("An error occurred.");
+      setError("Failed to execute the query.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="host" placeholder="Host" onChange={handleChange} />
-        <input type="text" name="user" placeholder="User" onChange={handleChange} />
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} />
-        <input type="text" name="database" placeholder="Database" onChange={handleChange} />
-        <textarea name="query" placeholder="SQL Query" onChange={handleChange}></textarea>
-        <button type="submit">Run Query</button>
+    <div className="p-6 bg-white shadow rounded-lg">
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <textarea
+          name="query"
+          placeholder="Enter your SQL query here..."
+          onChange={handleChange}
+          className="w-full p-2 border border-gray-300 rounded-lg"
+          rows={5}
+        ></textarea>
+        <button
+          type="submit"
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          disabled={isLoading}
+        >
+          {isLoading ? "Running Query..." : "Run Query"}
+        </button>
       </form>
+
+      {error && (
+        <div className="mt-4 p-3 bg-red-100 text-red-700 rounded">
+          <strong>Error:</strong> {error}
+        </div>
+      )}
+
       {results && (
-        <div>
-          <h2>Results:</h2>
-          <pre>{JSON.stringify(results, null, 2)}</pre>
+        <div className="mt-6">
+          <h2 className="text-lg font-bold">Results:</h2>
+          <div className="mt-2 overflow-x-auto bg-gray-100 p-4 rounded-lg">
+            <pre className="text-sm">{JSON.stringify(results, null, 2)}</pre>
+          </div>
         </div>
       )}
     </div>

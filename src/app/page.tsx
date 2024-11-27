@@ -1,11 +1,18 @@
-// pages/index.js
+import Sidebar from "@/components/Sidebar/Sidebar";
 import DBForm from "@/components/DBForm";
 
 export default function Home() {
   return (
-    <div>
-      <h1>DBMine</h1>
-      <DBForm />
+    <div className="w-full h-screen flex">
+      {/* Sidebar */}
+      <div className="w-1/6">
+         <Sidebar />
+      </div>
+
+      {/* Main Content */}
+      <div className="w-5/6 h-full flex items-center justify-center">
+        <DBForm />
+      </div>
     </div>
   );
 }
