@@ -1,9 +1,11 @@
+// pages/index.js
+import DBForm from "@/components/DBForm";
+
 export default function Home() {
   return (
-    <div className="">
-      <main className="">
-        
-      </main>
+    <div>
+      <h1>DBMine</h1>
+      <DBForm />
     </div>
   );
 }
