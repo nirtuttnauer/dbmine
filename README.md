@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# dbmine
 
-## Getting Started
+dbmine is an open-source project designed to provide a universal interface for connecting to and interacting with various databases. With a simple, intuitive interface, dbmine eliminates the complexity of managing multiple database tools, enabling users to connect to any database effortlessly.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+	•	Universal Connectivity: Seamlessly connect to a wide range of databases, including SQL and NoSQL databases.
+	•	User-Friendly Interface: Simple and intuitive commands to interact with databases.
+	•	Secure Connections: Built-in support for encrypted connections and credential management.
+	•	Cross-Platform: Works on Linux, macOS, and Windows.
+	•	Extensibility: Easily extend functionality to support new databases or custom features.
+	•	Open Source: Fully open-source and community-driven.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Supported Databases
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+	•	MySQL
+	•	PostgreSQL
+	•	MongoDB
+	•	SQLite
+	•	Microsoft SQL Server
+	•	Oracle
+	•	Redis
+	•	… and more!
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Getting Started
 
-## Learn More
+## Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+Ensure you have the following installed:
+	•	Node.js (version 14 or later)
+	•	npm or yarn
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To install dbmine, clone this repository and install dependencies:
 
-## Deploy on Vercel
+git clone https://github.com/yourusername/dbmine.git
+cd dbmine
+npm install
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Usage
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+	1.	Run the application:
+
+npm start
+
+  2. Add new connections
+
+## Contribution
+
+We welcome contributions from the community! Here’s how you can help:
+	1.	Fork the repository.
+	2.	Create a new branch for your feature or bug fix.
+	3.	Commit your changes.
+	4.	Submit a pull request with a detailed explanation of your changes.
+
+## Roadmap
+
+	•	Add more database integrations (e.g., DynamoDB, Cassandra).
+	•	Develop a graphical user interface (GUI).
+	•	Implement advanced features like query optimization hints and visualization.
+	•	Provide support for schema migration and version control.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Community
+
+Join our community on:
+	•	Discord
+	•	GitHub Discussions
+	•	Twitter
+
+## Acknowledgments
+
+Special thanks to the contributors and the open-source community for making this project possible.
