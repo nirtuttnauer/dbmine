@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build
-        run: docker build --tag whether_app .
+        run: docker build --tag dbmine .
       - name: Run Docker
         run: docker run -d --name app -p 3000:3000 dbmine
       - name: Set up Python
