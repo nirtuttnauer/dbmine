@@ -1,0 +1,24 @@
+name: test app before push to dockerhub
+on:
+  pull_request:
+    branches: [main, dev]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build
+        run: docker build --tag dbmine .
+      - name: Run Docker
+        run: docker run -d --name app -p 3000:3000 dbmine
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+      - name: Install software
+        run: sudo apt-get install -y chromium-browser chromium-chromedriver
+      - name: Install the necessary packages
+        run: pip install requests webdriver-manager selenium pytest
+      - name: Run the PytTest script
+        run: pytest -rA
